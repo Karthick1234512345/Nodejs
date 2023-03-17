@@ -1,0 +1,25 @@
+{  
+    "ERR_MNDTR_PRM_MSNG":{"code":400,"message":"Mandatory parameters are missing"},
+    "ERR_INRNL_SRVR":{"code":500,"message":"Internal Server Error"},
+    "ERR_NEW_CNFRM_PWD_DNOT_MATCH":{"code":600,"message":"New Password & Verify Password doesnot match"},
+    "ERR_UNBL_UPDT_PWD":{"code":700,"message":"Unable to update the password"},
+    "ERR_RQRD_PRM_MISSNG":{"code":702,"message":"Required parameter missing"},
+    "ERR_INVALID_EMAIL_OR_PASSWORD":{"code":704,"message":"Invalid email or password"},
+    "ERR_TMPR_PWD_EXPIRED": {"code": 412, "message": "Temporary password expired"},
+    "ERR_MAX_WRONG_OTP_ATTEMPTS_REACHED": {"code": 409, "message": "Error maximum wrong otp attempts reached"},
+    "ERR_MAX_OTP_ATTEMPTS_REACHED": {"code": 403, "message": "Error maximum otp attempts reached"},
+    "ERR_OTP_EXPIRED": {"code": 418, "message": "Error otp expired"},
+    "ERR_INVALID_USERNAME": {"code": 320, "message": "Invalid username"},
+    "ERR_RCRD_NOT_AVLBLE": {"code": 424, "message": "Record not available"},
+    "ERR_MISSING_PARAM": {"code": 422, "message": "Error missing param"},
+    "ERR_INVALID_PASSWORD": {"code": 423, "message": "Error invalid password"},
+    "ERR_PASSWORD_MISMATCH": {"code": 427, "message": "Error password mismatch"},
+    "ERR_VALIDATION_FAILED": {"code": 426, "message": "Error validation failed"},
+    "ERR_INVLD_CRDNTLS":{"code":401,"message":"Invalid Credentials"},
+    "ERR_INVALID_OTP":{"code":428,"message":"Invalid otp"},
+    "ERR_INVLD_PAYLOAD":{"code":430,"message":"Invalid payload"},
+    "ERR_RESET_PASSWORD_FAILED":{"code":435,"message":"Reset password failed"},
+    "ERR_INVALID_TEMP_PASSWORD":{"code":601,"message":"Invalid temporary password"},
+    "ERR_INVALID_PRMT_PASSWORD":{"code":602,"message":"Invalid permanent password"}
+}
+
