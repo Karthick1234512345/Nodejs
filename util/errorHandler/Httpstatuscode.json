@@ -20,6 +20,7 @@
     "ERR_INVLD_PAYLOAD":{"code":430,"message":"Invalid payload"},
     "ERR_RESET_PASSWORD_FAILED":{"code":435,"message":"Reset password failed"},
     "ERR_INVALID_TEMP_PASSWORD":{"code":601,"message":"Invalid temporary password"},
-    "ERR_INVALID_PRMT_PASSWORD":{"code":602,"message":"Invalid permanent password"}
+    "ERR_INVALID_PRMT_PASSWORD":{"code":602,"message":"Invalid permanent password"},
+    "ERR_USER_EXISTS":{"code":645,"message":"Error already users exsists"}
 }
 

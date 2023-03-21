@@ -10,7 +10,7 @@ const postlogin = async (req) => {
     throw new ErrorHandler('ERR_MNDTR_PRM_MSNG');
   }
 
-  const user = await model.User.findOne({ where: { Email: email } });
+  const user = await model.users.findOne({ where: { Email: email } });
   if (!user) {
     throw new ErrorHandler('ERR_INVLD_CRDNTLS');
   }

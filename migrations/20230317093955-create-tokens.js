@@ -1,7 +1,7 @@
-/** @type {import('sequelize-cli').Migration} */
+/* @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Tokens', {
+    await queryInterface.createTable('tokens', {
       id: {
         type: Sequelize.UUID,
         allowNull: false,
@@ -17,7 +17,7 @@ module.exports = {
         type: Sequelize.UUID,
         onDelete: 'CASCADE',
         references: {
-          model: 'Users',
+          model: 'users',
           key: 'id',
           as: 'userId',
         },
@@ -33,6 +33,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Tokens');
+    await queryInterface.dropTable('tokens');
   },
 };

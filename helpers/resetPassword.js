@@ -13,7 +13,7 @@ const resetPassword = async (req) => {
     throw new ErrorHandler('ERR_MNDTR_PRM_MSNG');
   }
 
-  const user = await model.User.findOne({ where: { Email: email } });
+  const user = await model.users.findOne({ where: { Email: email } });
   if (!user) {
     throw new ErrorHandler('ERR_RCRD_NOT_AVLBLE');
   }
@@ -30,7 +30,7 @@ const resetPassword = async (req) => {
 
     const hashedPwd = await bcrypt.hash(newPassword, appConstants.BCRYPT_SALT_ROUNDS);
     // eslint-disable-next-line max-len
-    await model.User.update({ temproaryPassword: null, permanentPassword: hashedPwd }, { where: { id: user.id } });
+    await model.users.update({ temproaryPassword: null, permanentPassword: hashedPwd }, { where: { id: user.id } });
 
     logger.info(`Password reset successfully for user ${email}`);
     return {

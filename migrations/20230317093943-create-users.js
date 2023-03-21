@@ -1,7 +1,8 @@
-/** @type {import('sequelize-cli').Migration} */
+/* @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('users', {
       id: {
         type: Sequelize.UUID,
         primaryKey: true,
@@ -15,6 +16,9 @@ module.exports = {
       Email: {
         type: Sequelize.STRING,
       },
+      Phonenumber: {
+        type: Sequelize.INTEGER,
+      },
       temproaryPassword: {
         type: Sequelize.STRING,
       },
@@ -25,7 +29,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references: {
-          model: 'Roles',
+          model: 'roles',
           key: 'id',
           as: 'roleId',
         },
@@ -64,6 +68,6 @@ module.exports = {
   },
   // eslint-disable-next-line no-unused-vars
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('users');
   },
 };

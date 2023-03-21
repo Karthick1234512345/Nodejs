@@ -22,14 +22,14 @@ const generateToken = async (user) => {
   let refreshToken = null;
   let expiryDate = null;
 
-  const tokenFromDB = await model.Token.findOne({ where: { userId: user.id } });
+  const tokenFromDB = await model.tokens.findOne({ where: { userId: user.id } });
   if (tokenFromDB && tokenFromDB.refreshToken && tokenFromDB.expiryDate > new Date()) {
     refreshToken = tokenFromDB.refreshToken;
     expiryDate = tokenFromDB.expiryDate;
   } else {
     refreshToken = jwt.sign(refreshTokenPayload, jwtRefreshSecretKey, { expiresIn: '30d' });
     expiryDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
-    await model.Token.create({
+    await model.tokens.create({
       id: uuid.v4(),
       refreshToken,
       expiryDate,

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+  const users = sequelize.define('users', {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     Email: DataTypes.STRING,
+    Phonenumber: DataTypes.INTEGER,
     temproaryPassword: DataTypes.STRING,
     temproaryPasswordExpiry: DataTypes.DATE,
     roleId: DataTypes.INTEGER,
@@ -21,16 +22,16 @@ module.exports = (sequelize, DataTypes) => {
     otpAttempts: DataTypes.INTEGER,
     otpWrongAttempts: DataTypes.INTEGER,
   }, {});
-  User.associate = function (models) {
-    User.belongsTo(models.Role, {
+  users.associate = function (models) {
+    users.belongsTo(models.roles, {
       foreignKey: 'roleId',
       onDelete: 'CASCADE',
     });
   };
-  User.associate = function (models) {
-    User.hasMany(models.Token, {
+  users.associate = function (models) {
+    users.hasMany(models.tokens, {
       foreignKey: 'userId',
     });
   };
-  return User;
+  return users;
 };

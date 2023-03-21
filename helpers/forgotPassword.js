@@ -15,7 +15,7 @@ const forgotPassword = async (req) => {
       throw new ErrorHandler('ERR_MNDTR_PRM_MSNG');
     }
 
-    const user = await model.User.findOne({ where: { Email: email } });
+    const user = await model.users.findOne({ where: { Email: email } });
 
     if (!user) {
       throw new ErrorHandler('ERR_RCRD_NOT_AVLBLE');
@@ -32,7 +32,7 @@ const forgotPassword = async (req) => {
       permanentPassword: null,
     };
 
-    await model.User.update(updateObj, { where: { id: user.id } });
+    await model.users.update(updateObj, { where: { id: user.id } });
 
     const emailData = {
       name: `${user.firstName} ${user.lastName}`,

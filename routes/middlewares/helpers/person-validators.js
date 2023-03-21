@@ -38,5 +38,4 @@ module.exports = {
   getResetpasswordPOSTSchema,
   getChangepasswordPOSTSchema,
   getGetuserbynameGETSchema,
-
 };

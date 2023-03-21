@@ -14,7 +14,7 @@ const changePassword = async (req) => {
       throw new ErrorHandler('ERR_MNDTR_PRM_MSNG');
     }
 
-    const user = await model.User.findOne({ where: { Email: email } });
+    const user = await model.users.findOne({ where: { Email: email } });
     if (!user) {
       throw new ErrorHandler('ERR_RCRD_NOT_AVLBLE');
     }
@@ -30,7 +30,7 @@ const changePassword = async (req) => {
 
     const hashedPwd = await bcrypt.hash(newPassword, appConstants.BCRYPT_SALT_ROUNDS);
 
-    await model.User.update({ permanentPassword: hashedPwd }, { where: { id: user.id } });
+    await model.users.update({ permanentPassword: hashedPwd }, { where: { id: user.id } });
 
     logger.info('Password changed successfully');
     return {

@@ -13,5 +13,7 @@ router.post('/forgotpassword', validatePayload, (req, res, next) => personCore.f
 router.post('/resetpassword', validatePayload, (req, res, next) => personCore.resetPassword(req, res, next));
 router.post('/changepassword', validatePayload, (req, res, next) => personCore.changepassword(req, res, next));
 router.get('/getuserbyname', validatePayload, (req, res, next) => personCore.getuserbyname(req, res, next));
+router.post('/createuser', (req, res, next) => personCore.createUser(req, res, next));
+router.put('/edituser', (req, res, next) => personCore.edituser(req, res, next));
 
 module.exports = router;

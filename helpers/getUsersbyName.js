@@ -9,7 +9,7 @@ const getUserByName = async (req) => {
     if (!username) {
       throw new ErrorHandler('ERR_MNDTR_PRM_MSNG');
     }
-    const user = await model.User.findOne({ where: { Email: username } });
+    const user = await model.users.findOne({ where: { Email: username } });
     if (!user) {
       throw new ErrorHandler('ERR_RCRD_NOT_AVLBLE');
     }
@@ -21,6 +21,7 @@ const getUserByName = async (req) => {
       email: user.Email,
       accountType: user.accountType,
       status: user.status,
+      Phonenumber: user.Phonenumber,
     };
   } catch (error) {
     logger.error(`Error occurred while getting user by name. Error: ${error.message}`);
