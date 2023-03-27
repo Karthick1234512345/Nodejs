@@ -1,4 +1,5 @@
 /* @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('tokens', {
@@ -6,6 +7,9 @@ module.exports = {
         type: Sequelize.UUID,
         allowNull: false,
         primaryKey: true,
+      },
+      accessToken: {
+        type: Sequelize.STRING(5000),
       },
       refreshToken: {
         type: Sequelize.STRING(5000),

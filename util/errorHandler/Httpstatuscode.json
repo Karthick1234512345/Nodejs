@@ -21,6 +21,15 @@
     "ERR_RESET_PASSWORD_FAILED":{"code":435,"message":"Reset password failed"},
     "ERR_INVALID_TEMP_PASSWORD":{"code":601,"message":"Invalid temporary password"},
     "ERR_INVALID_PRMT_PASSWORD":{"code":602,"message":"Invalid permanent password"},
-    "ERR_USER_EXISTS":{"code":645,"message":"Error already users exsists"}
+    "ERR_USER_EXISTS":{"code":645,"message":"Error already users exsists"},
+    "ERR_TKN_NOT_AVLBLE":{"code":701,"message":"Token not available"},
+    "ERR_TOKEN_EXPIRED":{"code":702,"message":"Token expired"},
+    "ERR_INVLD_TKN":{"code":703,"message":"Invalid token"},
+    "ERR_TKN_BLOCKED":{"code":704,"message":"Token blocked"},
+    "ERR_INVLD_RFRSH_TKN":{"code":705,"message":"Invalid refresh token"},
+    "ERR_BLKLS_TKN":{"code":706,"message":"Blocked token"},
+    "ERR_LOGGED_OUT":{"code":707,"message":"Error user already logged out"},
+    "ERR_REFRESH_TOKEN_NOT_FOUND":{"code":708,"message":"Error refresh token not found"},
+    "ERR_REFRESH_TOKEN_EXPIRED":{"code":709,"message":"Error refresh token expired"},
+    "ERR_USER_NOT_FOUND":{"code":710,"message":"Error user not found"}
 }
-

@@ -1,33 +1,31 @@
+const Sequelize = require('sequelize');
+
+const { Op } = require('sequelize');
 const model = require('../models');
 const { ErrorHandler } = require('../util/errorHandler/error');
 const logger = require('../services/logger');
 
-const getUsers = async (req) => {
+const getAllUsers = async () => {
   try {
-    const {
-      firstName, lastName, email, accountType, status,
-    } = req;
-
-    const whereClause = {};
-    if (firstName) whereClause.firstName = firstName;
-    if (lastName) whereClause.lastName = lastName;
-    if (email) whereClause.Email = email;
-    if (accountType) whereClause.accountType = accountType;
-    if (status) whereClause.status = status;
-
-    const users = await model.User.findAll({ where: whereClause });
+    const users = await model.users.findAll({
+      where: {
+        status: 'enabled',
+        [Op.and]: [
+          Sequelize.literal('LENGTH("firstName") > LENGTH("lastName")'),
+          {
+            Phonenumber: {
+              [Op.ne]: null,
+            },
+          },
+        ],
+      },
+      attributes: ['id', 'firstName', 'lastName', 'Email', 'accountType', 'status', 'Phonenumber'],
+    });
     if (!users.length) {
       throw new ErrorHandler('ERR_RCRD_NOT_AVLBLE');
     }
     logger.info(`${users.length} users found`);
-    return users.map((user) => ({
-      id: user.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.Email,
-      accountType: user.accountType,
-      status: user.status,
-    }));
+    return users.map((user) => user.toJSON());
   } catch (error) {
     if (error.code) {
       throw new ErrorHandler(error.code);
@@ -36,5 +34,4 @@ const getUsers = async (req) => {
     throw new ErrorHandler('ERR_INRNL_SRVR');
   }
 };
-
-module.exports = { getUsers };
+module.exports = { getAllUsers };

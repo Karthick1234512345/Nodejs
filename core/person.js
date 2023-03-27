@@ -5,7 +5,11 @@ const verifyotp = require('../helpers/verifyOtp');
 const forgotpassword = require('../helpers/forgotPassword');
 const resetpassword = require('../helpers/resetPassword');
 const changepassword = require('../helpers/changePassword');
-const getuserbyname = require('../helpers/getUsersbyId');
+const getuserbyname = require('../helpers/getUsersbyName');
+const createuser = require('../helpers/createUser');
+const edituser = require('../helpers/editUser');
+const getallusers = require('../helpers/getAllUsers');
+const logout = require('../helpers/logout');
 
 const personCore = {};
 
@@ -65,5 +69,35 @@ personCore.getuserbyname = (req, res, next) => {
     next(err);
   });
 };
+personCore.createUser = (req, res, next) => {
+  createuser.createUser(req.body).then((response) => {
+    res.status(200).json(response);
+  }).catch((err) => {
+    next(err);
+  });
+};
 
+personCore.edituser = (req, res, next) => {
+  const { userId } = req.query;
+  edituser.editUser(userId, req.body).then((response) => {
+    res.status(200).json(response);
+  }).catch((err) => {
+    next(err);
+  });
+};
+
+personCore.getallusers = (req, res, next) => {
+  getallusers.getAllUsers(req.body).then((response) => {
+    res.status(200).json(response);
+  }).catch((err) => {
+    next(err);
+  });
+};
+personCore.logout = (req, res, next) => {
+  logout.logout(req.body).then((response) => {
+    res.status(200).json(response);
+  }).catch((err) => {
+    next(err);
+  });
+};
 module.exports = personCore;

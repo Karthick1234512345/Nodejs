@@ -39,11 +39,8 @@ const forgotPassword = async (req) => {
       email: user.Email ? user.Email : '',
       temproaryPassword: tempPassword,
     };
-
     await sendEmail(emailData, 'forgotPassword');
-
     logger.info(`Forgot password email sent to ${email}`);
-
     return {
       success: true,
     };
@@ -55,5 +52,4 @@ const forgotPassword = async (req) => {
     throw new ErrorHandler('ERR_INRNL_SRVR');
   }
 };
-
 module.exports = { forgotPassword };

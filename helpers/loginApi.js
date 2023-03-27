@@ -9,7 +9,6 @@ const postlogin = async (req) => {
   if (!email || !password) {
     throw new ErrorHandler('ERR_MNDTR_PRM_MSNG');
   }
-
   const user = await model.users.findOne({ where: { Email: email } });
   if (!user) {
     throw new ErrorHandler('ERR_INVLD_CRDNTLS');
@@ -33,13 +32,11 @@ const postlogin = async (req) => {
         throw new ErrorHandler('ERR_INVALID_PRMT_PASSWORD');
       }
     }
-
     logger.info(`Generating tokens for user ${user.id}`);
-    const { token, refreshToken } = await generateToken(user);
-
+    const { accessToken, refreshToken } = await generateToken(user);
     return {
       success: true,
-      token,
+      accessToken,
       refreshToken,
       userLoggedInWithTemporaryPassword,
     };

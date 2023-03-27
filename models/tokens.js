@@ -7,7 +7,10 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         allowNull: false,
       },
-      refreshToken: DataTypes.STRING,
+      accessToken: DataTypes.STRING(5000),
+      refreshToken: {
+        type: DataTypes.STRING(5000),
+      },
       expiryDate: DataTypes.STRING(5000),
       userId: {
         type: DataTypes.UUID,
