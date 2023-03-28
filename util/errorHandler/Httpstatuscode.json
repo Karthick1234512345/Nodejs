@@ -31,5 +31,8 @@
     "ERR_LOGGED_OUT":{"code":707,"message":"Error user already logged out"},
     "ERR_REFRESH_TOKEN_NOT_FOUND":{"code":708,"message":"Error refresh token not found"},
     "ERR_REFRESH_TOKEN_EXPIRED":{"code":709,"message":"Error refresh token expired"},
-    "ERR_USER_NOT_FOUND":{"code":710,"message":"Error user not found"}
+    "ERR_USER_NOT_FOUND":{"code":710,"message":"Error user not found"},
+    "ERR_EMAIL_ALREADY_EXISTS":{"code":711,"message":"Error user already exists"},
+    "ERR_MISSING_EMAIL":{"code":712,"message":"Error email missing"},
+    "ERR_EMAIL_EXISTS":{"code":713,"message":"Error email already exist"}
 }

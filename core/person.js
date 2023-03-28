@@ -10,6 +10,7 @@ const createuser = require('../helpers/createUser');
 const edituser = require('../helpers/editUser');
 const getallusers = require('../helpers/getAllUsers');
 const logout = require('../helpers/logout');
+const editApitesting = require('../helpers/editapitesting');
 
 const personCore = {};
 
@@ -62,13 +63,16 @@ personCore.changepassword = (req, res, next) => {
     next(err);
   });
 };
+
 personCore.getuserbyname = (req, res, next) => {
-  getuserbyname.getUserByName(req.body).then((response) => {
+  const { username } = req.query;
+  getuserbyname.getUserByName(username).then((response) => {
     res.status(200).json(response);
   }).catch((err) => {
     next(err);
   });
 };
+
 personCore.createUser = (req, res, next) => {
   createuser.createUser(req.body).then((response) => {
     res.status(200).json(response);
@@ -80,6 +84,14 @@ personCore.createUser = (req, res, next) => {
 personCore.edituser = (req, res, next) => {
   const { userId } = req.query;
   edituser.editUser(userId, req.body).then((response) => {
+    res.status(200).json(response);
+  }).catch((err) => {
+    next(err);
+  });
+};
+personCore.editapitesting = (req, res, next) => {
+  const { userId } = req.query;
+  editApitesting.editUsertesing(userId, req.body).then((response) => {
     res.status(200).json(response);
   }).catch((err) => {
     next(err);

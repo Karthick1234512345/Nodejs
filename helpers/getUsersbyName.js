@@ -2,9 +2,7 @@ const { ErrorHandler } = require('../util/errorHandler/error');
 const model = require('../models');
 const logger = require('../services/logger');
 
-const getUserByName = async (req) => {
-  const { username } = req;
-
+const getUserByName = async (username) => {
   try {
     if (!username) {
       throw new ErrorHandler('ERR_MNDTR_PRM_MSNG');
@@ -24,6 +22,7 @@ const getUserByName = async (req) => {
       Phonenumber: user.Phonenumber,
     };
   } catch (error) {
+    console.log(error, '..........................error');
     logger.error(`Error occurred while getting user by name. Error: ${error.message}`);
     if (error.code) {
       throw new ErrorHandler(error.code);

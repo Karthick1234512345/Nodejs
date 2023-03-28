@@ -12,6 +12,10 @@ const logout = async (req) => {
   logger.info(`Invalidating token for userId ${userId}`);
 
   try {
+    const existingUser = await model.users.findOne({ where: { id: userId } });
+    if (!existingUser) {
+      throw new ErrorHandler('ERR_USER_NOT_FOUND');
+    }
     const token = await model.tokens.findOne({
       where: { userId },
     });
